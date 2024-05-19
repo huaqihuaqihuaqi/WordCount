@@ -19,23 +19,22 @@ int WordCount(char file[]){
         }
         mychar=fgetc(p);
     }
-    delete p;
+    fclose(p);
     return count;
 }
 int main(){
-    char input[10],File[200];
+    char input[2],File[100];
     while(1){
         printf("请输入用户命令：wc.exe-");
         scanf("%s",&input);
         if(input[0]=='w'){
             printf("请输入文件名：");
             scanf("%s",&File); 
-            int wordcount=0;
-            wordcount=WordCount(File);
-            printf("文件的词数为：%d\n",wordcount);
-            continue;
+            int count = 0; 
+            count=WordCount(File);
+            printf("文件的词数为：%d\n",count);
+            return 0;
         }
     }
-    return 0;
 }
 

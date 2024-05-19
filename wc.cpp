@@ -1,7 +1,7 @@
 #include<stdio.h> 
 int WordCount(char file[]){
     FILE *p=NULL;
-    int wcount=0;
+    int count=0;
     p=fopen(file,"r");
     if(p==NULL){
         printf("Ñ°ÕÒÎÄ¼þÊ§°Ü\n");
@@ -9,18 +9,18 @@ int WordCount(char file[]){
     }
     char mychar;
     mychar = fgetc(p);
-    while(mychar!=EOF){
+    while(mychar!=-1){
         if(mychar>='a'&&mychar<='z'||mychar>='A'&&mychar<='Z'||mychar>='0'&&mychar<='9'){
-            while(mychar>='a'&&mychar<='z'||mychar>='A'&&mychar<='Z'||mychar>='0'&&mychar<='9'||mychar=='_'){
+            while(mychar>='a'&&mychar<='z'||mychar>='A'&&mychar<='Z'||mychar>='0'&&mychar<='9'){
                 mychar=fgetc(p);
             }
-            wcount++;
+            count++;
             mychar=fgetc(p);
         }
         mychar=fgetc(p);
     }
-    fclose(p);
-    return wcount;
+    delete p;
+    return count;
 }
 int main(){
     char input[10],File[200];
